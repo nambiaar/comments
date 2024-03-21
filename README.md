@@ -15,6 +15,7 @@ go to http://localhost:5173/
 pnpm run tests
 ```
 
+![image](https://github.com/nambiaar/comments/assets/17496087/eaebc919-a3b7-4bf4-96a1-85393aaca605){width=400px}
 
 
 # React + TypeScript + Vite
