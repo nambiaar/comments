@@ -1,3 +1,22 @@
+## In order to run the project
+
+```js
+git clone https://github.com/nambiaar/comments.git
+cd comments
+pnpm install
+pnpm run dev
+```
+
+go to http://localhost:5173/
+
+## In order to run tests
+
+```js
+pnpm run tests
+```
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
