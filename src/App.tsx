@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import { AppHeader } from "./components/AppHeader";
 import { useForm } from "./hooks/useForm";
+import { useNavigate } from "react-router-dom";
 
 import {
   useGetCommentsQuery,
@@ -44,13 +45,16 @@ export default function App() {
   const [deleteComments, { isLoading: isDeleting }] =
     useDeleteCommentsMutation();
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const { name, message } = formData;
-    if (name && name.length && message && message.length) {
+    if (name?.length && message?.length) {
       addComment({ name, message });
       reset();
+      navigate("/Page2");
     }
   };
 
@@ -59,14 +63,14 @@ export default function App() {
       <div></div>
       <div className="text-center lg:px-5 px-20">
         <AppHeader appName="Comments Feed" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="px-20">
           <div className="mt-6">Name</div>
           <input
             type="text"
             name="name"
             onChange={handleInputChange}
             value={formData.name}
-            className="border-2 border-[#000]"
+            className="border-2 border-[#000] w-full"
           />
           {formData.touched.name && !formData.name && (
             <div className=" text-[#FF0000]">Please fill in your name</div>
@@ -76,9 +80,8 @@ export default function App() {
           <textarea
             name="message"
             rows={10}
-            cols={40}
             onChange={handleInputChange}
-            className="mt-10 border-2 border-[#000]"
+            className="mt-10 border-2 border-[#000] w-full"
             value={formData.message}
           />
           {formData.touched.message && !formData.message && (
